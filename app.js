@@ -29,26 +29,46 @@ function computerChoice() {
 function playRound(playerSelection, computerSelection) {
     //player wins
     if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "rock")) {
-        let win = `You win! ${playerSelection} beats ${computerSelection}!`;
-        return win;
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        return "win";
     }
 
     else if (playerSelection === computerSelection) {
-        let tie = `Tie! You and the Computer both chose ${computerSelection}!`;
-        return tie;
+        console.log(`Tie! You and the Computer both chose ${computerSelection}!`);
+        return "tie";
     }
 
     //player loses
     else {
-        let lose = `You lose. ${computerSelection} beats ${playerSelection}!`;
-        return lose;
+        console.log(`You lose. ${computerSelection} beats ${playerSelection}!`);
+        return "lose";
     }
 }
 
 function game() {
+    let playerScore = 0;
+    let computerScore = 0;
     for (i = 0; i < 5; i++) {
         const computerSelection = computerChoice();
         let playerSelection = playerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        let roundResult = playRound(playerSelection, computerSelection);
+        if (roundResult === "win") {
+            playerScore++;
+        }
+
+        else if (roundResult === "lose") {
+            computerScore++;
+        }
+        playRound(playerSelection, computerSelection);
+        console.log(`Player Score: ${playerScore}`);
+        console.log(`ComputerScore: ${computerScore}`);
+    }
+
+    if (playerScore > computerScore){
+        console.log("Congratulations! You win!")
+    }
+
+    else {
+        console.log("You lose... Better luck next time...")
     }
 }
