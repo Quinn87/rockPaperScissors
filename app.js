@@ -1,3 +1,5 @@
+game();
+
 function playerChoice() {
     //prompt for the players choice
     let playerSelection = prompt("Enter rock, paper, or scissors.").toLowerCase();
@@ -27,19 +29,19 @@ function computerChoice() {
 function playRound(playerSelection, computerSelection) {
     //player wins
     if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "rock")) {
-        let roundResult = `You win! ${playerSelection} beats ${computerSelection}!`;
-        return roundResult;
+        let win = `You win! ${playerSelection} beats ${computerSelection}!`;
+        return win;
     }
 
     else if (playerSelection === computerSelection) {
-        let roundResult = `Tie! You and the Computer both chose ${computerSelection}!`;
-        return roundResult;
+        let tie = `Tie! You and the Computer both chose ${computerSelection}!`;
+        return tie;
     }
 
     //player loses
     else {
-        let roundResult = `You lose. ${computerSelection} beats ${playerSelection}!`;
-        return roundResult;
+        let lose = `You lose. ${computerSelection} beats ${playerSelection}!`;
+        return lose;
     }
 }
 
@@ -50,5 +52,3 @@ function game() {
         console.log(playRound(playerSelection, computerSelection));
     }
 }
-
-game();
