@@ -1,3 +1,5 @@
+let playerScore = 0;
+let computerScore = 0;
 game();
 
 function playerChoice() {
@@ -46,8 +48,6 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
     for (i = 0; i < 5; i++) {
         const computerSelection = computerChoice();
         let playerSelection = playerChoice();
