@@ -30,7 +30,9 @@ function computerChoice() {
 //play round
 function playRound(playerSelection, computerSelection) {
     //player wins
-    if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "rock")) {
+    if ((playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "paper" && computerSelection == "rock") ||
+        (playerSelection == "scissors" && computerSelection == "rock")) {
         console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
         return "win";
     }
@@ -64,7 +66,7 @@ function game() {
         console.log(`ComputerScore: ${computerScore}`);
     }
 
-    if (playerScore > computerScore){
+    if (playerScore > computerScore) {
         console.log("Congratulations! You win!")
     }
 
