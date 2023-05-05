@@ -5,26 +5,41 @@ const result = document.querySelector('#result');
 
 let playerScore = 0;
 let computerScore = 0;
-// game();
+let winningScore = 5;
+let isGameOver = false;
+
 
 buttons.forEach(button => button.addEventListener('click', function () {
     let playerSelection = this.textContent
     let computerSelection = computerChoice();
     let roundResult = playRound(playerSelection, computerSelection);
 
-    if (roundResult === "win") {
-        playerScore++;
-        playerScoreDisplay.textContent = playerScore;
-        result.textContent = `You win! ${playerSelection} beats ${computerSelection}!`
-    }
+    if (!isGameOver) {
 
-    else if (playerSelection === computerSelection) {
-        result.textContent = `Tie! You and the Computer both chose ${computerSelection}!`
-    }
-    else if (roundResult === "lose") {
-        computerScore++;
-        computerScoreDisplay.textContent = computerScore;
-        result.textContent = `You lose. ${computerSelection} beats ${playerSelection}!`
+        if (roundResult === "win") {
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
+            result.textContent = `You win! ${playerSelection} beats ${computerSelection}!`
+        }
+
+        else if (playerSelection === computerSelection) {
+            result.textContent = `Tie! You and the Computer both chose ${computerSelection}!`
+        }
+        else if (roundResult === "lose") {
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
+            result.textContent = `You lose. ${computerSelection} beats ${playerSelection}!`
+        }
+
+        if (playerScore === winningScore){
+            isGameOver = true;
+            buttons.disabled = true;
+        }
+
+        else if (computerScore === winningScore){
+            isGameOver = true;
+            buttons.disabled = true;
+        }
     }
 }));
 
@@ -67,28 +82,28 @@ function playRound(playerSelection, computerSelection) {
 
 
 
-function game() {
-    for (i = 0; i < 5; i++) {
-        const computerSelection = computerChoice();
-        let playerSelection = playerChoice();
-        let roundResult = playRound(playerSelection, computerSelection);
-        if (roundResult === "win") {
-            playerScore++;
-        }
+// function game() {
+//     for (i = 0; i < 5; i++) {
+//         const computerSelection = computerChoice();
+//         let playerSelection = playerChoice();
+//         let roundResult = playRound(playerSelection, computerSelection);
+//         if (roundResult === "win") {
+//             playerScore++;
+//         }
 
-        else if (roundResult === "lose") {
-            computerScore++;
-        }
-        playRound(playerSelection, computerSelection);
-        console.log(`Player Score: ${playerScore}`);
-        console.log(`ComputerScore: ${computerScore}`);
-    }
+//         else if (roundResult === "lose") {
+//             computerScore++;
+//         }
+//         playRound(playerSelection, computerSelection);
+//         console.log(`Player Score: ${playerScore}`);
+//         console.log(`ComputerScore: ${computerScore}`);
+//     }
 
-    if (playerScore > computerScore) {
-        console.log("Congratulations! You win!")
-    }
+//     if (playerScore > computerScore) {
+//         console.log("Congratulations! You win!")
+//     }
 
-    else {
-        console.log("You lose... Better luck next time...")
-    }
-}
+//     else {
+//         console.log("You lose... Better luck next time...")
+//     }
+// }
