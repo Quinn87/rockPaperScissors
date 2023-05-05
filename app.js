@@ -34,11 +34,13 @@ buttons.forEach(button => button.addEventListener('click', function () {
         if (playerScore === winningScore){
             isGameOver = true;
             buttons.disabled = true;
+            gameResult.textContent = "Congratulations! You win!"
         }
 
         else if (computerScore === winningScore){
             isGameOver = true;
             buttons.disabled = true;
+            gameResult.textContent = "You lose... Better luck next time..."
         }
     }
 }));
@@ -79,31 +81,3 @@ function playRound(playerSelection, computerSelection) {
         return "lose";
     }
 }
-
-
-
-// function game() {
-//     for (i = 0; i < 5; i++) {
-//         const computerSelection = computerChoice();
-//         let playerSelection = playerChoice();
-//         let roundResult = playRound(playerSelection, computerSelection);
-//         if (roundResult === "win") {
-//             playerScore++;
-//         }
-
-//         else if (roundResult === "lose") {
-//             computerScore++;
-//         }
-//         playRound(playerSelection, computerSelection);
-//         console.log(`Player Score: ${playerScore}`);
-//         console.log(`ComputerScore: ${computerScore}`);
-//     }
-
-//     if (playerScore > computerScore) {
-//         console.log("Congratulations! You win!")
-//     }
-
-//     else {
-//         console.log("You lose... Better luck next time...")
-//     }
-// }
