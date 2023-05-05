@@ -33,22 +33,22 @@ function computerChoice() {
     let randomNumber = Math.floor(Math.random() * 100) + 1;
 
     if (randomNumber <= 33) {
-        return "rock";
+        return "Rock";
     }
     else if (randomNumber > 66) {
-        return "paper";
+        return "Paper";
     }
     else {
-        return "scissors";
+        return "Scissors";
     }
 }
 
 //play round
 function playRound(playerSelection, computerSelection) {
     //player wins
-    if ((playerSelection == "rock" && computerSelection == "scissors") ||
-        (playerSelection == "paper" && computerSelection == "rock") ||
-        (playerSelection == "scissors" && computerSelection == "rock")) {
+    if ((playerSelection == "Rock" && computerSelection == "Scissors") ||
+        (playerSelection == "Paper" && computerSelection == "Rock") ||
+        (playerSelection == "Scissors" && computerSelection == "Rock")) {
         console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
         return "win";
     }
